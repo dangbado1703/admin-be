@@ -1,0 +1,46 @@
+import { Sequelize } from "sequelize";
+import {
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+  DataTypes,
+} from "sequelize";
+
+export class User extends Model<
+  InferAttributes<User>,
+  InferCreationAttributes<User>
+> {
+  declare user_id: number;
+  declare username: string;
+  declare password: string;
+}
+
+const userModel = (sequelize: Sequelize) => {
+  return User.init(
+    {
+      user_id: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        autoIncrement: true,
+        allowNull: false,
+        unique: true,
+      },
+      username: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
+    },
+    {
+      sequelize,
+      tableName: "user",
+      deletedAt: false,
+      createdAt: false,
+      updatedAt: false,
+    }
+  );
+};
+
+export default userModel;
