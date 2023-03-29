@@ -17,7 +17,7 @@ declare module "express-serve-static-core" {
   }
 }
 const app: Application = Express();
-const PORT = process.env.PORT || 3002;
+const PORT = 3002;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());

@@ -21,8 +21,7 @@ const userModel = (sequelize: Sequelize) => {
       user_id: {
         type: DataTypes.INTEGER.UNSIGNED,
         autoIncrement: true,
-        allowNull: false,
-        unique: true,
+        primaryKey: true
       },
       username: {
         type: DataTypes.STRING(255),
